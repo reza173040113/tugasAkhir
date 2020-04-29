@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:furniture_ui/details.dart';
 
+import 'jenisDonasi.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatefulWidget {
@@ -129,9 +131,8 @@ class Home extends StatelessWidget {
                           child: TextField(
                             decoration: InputDecoration(
                               border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(15.0),
-                                borderSide: BorderSide.none
-                              ),
+                                  borderRadius: BorderRadius.circular(15.0),
+                                  borderSide: BorderSide.none),
                               hintText: "Search Donasi",
                               prefixIcon: Icon(
                                 Icons.search,
@@ -207,9 +208,15 @@ class CategoryContainer extends StatelessWidget {
               Flexible(
                 child: Column(
                   children: <Widget>[
-                    Image.asset(
-                      "assets/imgs/1.png",
-                      width: 50,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => JenisDonasi()));
+                      },
+                      child: Image.asset(
+                        "assets/imgs/1.png",
+                        width: 50,
+                      ),
                     ),
                     SizedBox(height: 15),
                     Text("Harian")
@@ -256,7 +263,8 @@ class DealsContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context)=>Details()));
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Details()));
       },
       child: Container(
         child: Column(
@@ -273,7 +281,10 @@ class DealsContainer extends StatelessWidget {
                     "See All",
                     style: TextStyle(color: Colors.blueAccent, fontSize: 15),
                   ),
-                  onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>Home()));},
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Home()));
+                  },
                 )
               ],
             ),
@@ -316,7 +327,7 @@ class SingleItem extends StatelessWidget {
             bottom: 0,
             right: 0,
             left: 0,
-            top:0,
+            top: 0,
             child: Container(
               child: Image.asset(
                 "assets/imgs/detail.jpeg",
